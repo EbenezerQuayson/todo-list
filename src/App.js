@@ -38,6 +38,16 @@ function App() {
     );
   };
 
+  //Clear All todos
+  const clearAll = () => {
+    if (todos.length === 0) return; // No todos to clear
+    const confirmClear = window.confirm('Are you sure you want to clear all todos?');
+    if (!confirmClear) return;
+      setTodos([]);
+      
+    
+  };
+
   //✅  Add todo on Enter key
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
@@ -67,7 +77,10 @@ function App() {
         todos={todos}
         removeTodo={removeTodo}
         toggleComplete={toggleComplete}
+        clearAll={clearAll}
       />
+      
+
     </div>
   );
 }
