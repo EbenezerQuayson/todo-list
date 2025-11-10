@@ -38,6 +38,14 @@ function App() {
     );
   };
 
+  //✅  Add todo on Enter key
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault(); // prevents newline in textarea
+      addTodo();
+    }
+  };
+
   // ✅ Correct return (top-level)
   return (
     <div className="container">
@@ -47,8 +55,12 @@ function App() {
           placeholder="Enter your new todo"
           value={newTodo}
           onChange={(e) => setNewTodo(e.target.value)}
+          onKeyDown={handleKeyDown} // handle Enter key press
         ></textarea>
-        <i className="uil uil-notes note-icon" onClick={addTodo}></i>
+        <i className="uil uil-notes note-icon" 
+        onClick={addTodo}
+        title='Add Todo'
+        ></i>
       </div>
 
       <TodoLists
