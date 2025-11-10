@@ -1,23 +1,61 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import TodoLists from './Components/TodoLists/TodoLists';
 
 function App() {
+  const [todos, setTodos] = useState([
+    { id: 1, text: 'Sample Todo 1', completed: false },
+    { id: 2, text: 'Sample Todo 2', completed: false },
+  ]);
+
+  const [newTodo, setNewTodo] = useState('');
+
+  // ✅ Add todo
+  const addTodo = () => {
+    if (newTodo.trim() === '') return;
+
+    const newItem = {
+      id: Date.now(),
+      text: newTodo,
+      completed: false,
+    };
+
+    setTodos([...todos, newItem]);
+    setNewTodo('');
+  };
+
+  // ✅ Remove todo
+  const removeTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
+  // ✅ Toggle complete
+  const toggleComplete = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  };
+
+  // ✅ Correct return (top-level)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h2>Todo List</h2>
+      <div className="input-field">
+        <textarea
+          placeholder="Enter your new todo"
+          value={newTodo}
+          onChange={(e) => setNewTodo(e.target.value)}
+        ></textarea>
+        <i className="uil uil-notes note-icon" onClick={addTodo}></i>
+      </div>
+
+      <TodoLists
+        todos={todos}
+        removeTodo={removeTodo}
+        toggleComplete={toggleComplete}
+      />
     </div>
   );
 }

@@ -1,38 +1,102 @@
-.App {
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  background-color: #e3f2fd;
+}
+
+
+/* For Scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f2f2f2;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: #ccc;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+.container {
+  position: relative;
+  max-width: 480px;
+  width: 100%;
+  border-radius: 8px;
+  padding: 25px;
+  margin: 85px auto 0;
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
   text-align: center;
+  margin-bottom: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
+
+.input-field {
+  position: relative;
+  height: 64px;
+  width: 100%;
+}
+
+
+.input-field textarea{
+   height: 100%;
+  width: 100%;
+  outline: none;
+  font-size: 18px;
+  font-weight: 400;
+  border-radius: 8px;
+  padding: 18px 45px 18px 15px;
+  border: 1px solid #ccc;
+  resize: none; 
+}
+
+
+.input-field textarea:focus {
+  border-color: #4070f4;
+}
+textarea::-webkit-scrollbar {
+  display: none;
+}
+.input-field .note-icon {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
   pointer-events: none;
+  font-size: 24px;
+  color: #707070;
+}
+.input-field textarea:focus ~ .note-icon {
+  color: #4070f4;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+
+@media screen and (max-width: 350px) {
+  .container {
+    padding: 25px 10px;
   }
 }
