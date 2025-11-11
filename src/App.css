@@ -83,9 +83,10 @@ textarea::-webkit-scrollbar {
   top: 50%;
   right: 15px;
   transform: translateY(-50%);
-  pointer-events: none;
+  pointer-events: auto;
   font-size: 24px;
   color: #707070;
+  cursor: pointer;
 }
 .note-icon:hover{
   cursor: pointer;
